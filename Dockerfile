@@ -9,7 +9,7 @@ RUN pip install pep8 flake8 pyflakes isort yapf
 
 ADD config/. /root/
 RUN timeout 3m vim || true
-COPY config/NERD_tree.vim /root/.vim/plugged/nerdtree/plugin/NERD_tree.vim
+COPY bugfix/NERD_tree.vim /root/.vim/plugged/nerdtree/plugin/NERD_tree.vim
 
 EXPOSE 22
-CMD ["/bin/bash"]
+ENTRYPOINT service ssh restart && bash
