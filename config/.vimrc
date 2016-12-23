@@ -195,8 +195,8 @@ set completeopt-=preview
 ca w!! w !sudo tee "%"
 
 " simple recursive grep
-nmap ,r :Ack 
-nmap ,wr :Ack <cword><CR>
+nmap <leader>r :Ack 
+nmap <leader>wr :Ack <cword><CR>
 
 " use 256 colors when possible
 if (&term =~? 'mlterm\|xterm\|xterm-256\|screen-256') || has('nvim')
@@ -242,6 +242,7 @@ endif
 " ============================================================================
 " Plugins settings and mappings
 " Edit them as you wish.
+let mapleader = ";"
 
 " Tagbar ----------------------------- 
 
@@ -253,12 +254,9 @@ let g:tagbar_autofocus = 1
 " NERDTree ----------------------------- 
 
 " toggle nerdtree display
-"map <F3> :NERDTreeToggle<CR>
-" open nerdtree with the current file selected
-"nmap ,t :NERDTreeFind<CR>
-"" Open NERDTree with custom shortcut, here 'zz'
-let mapleader = "z"            
 nmap <leader>z :NERDTreeToggle<cr>
+" open nerdtree with the current file selected
+"nmap <leader>t :NERDTreeFind<CR>
 
 "" Optional, to show special NERDTree browser characters properly (e.g. on
 "remote linux system)
@@ -281,28 +279,28 @@ map <F2> :TaskList<CR>
 " file finder mapping
 let g:ctrlp_map = ',e'
 " tags (symbols) in current file finder mapping
-nmap ,g :CtrlPBufTag<CR>
+nmap <leader>g :CtrlPBufTag<CR>
 " tags (symbols) in all files finder mapping
-nmap ,G :CtrlPBufTagAll<CR>
+nmap <leader>G :CtrlPBufTagAll<CR>
 " general code finder in all files mapping
-nmap ,f :CtrlPLine<CR>
+nmap <leader>f :CtrlPLine<CR>
 " recent files finder mapping
-nmap ,m :CtrlPMRUFiles<CR>
+nmap <leader>m :CtrlPMRUFiles<CR>
 " commands finder mapping
-nmap ,c :CtrlPCmdPalette<CR>
+nmap <leader>c :CtrlPCmdPalette<CR>
 " to be able to call CtrlP with default search text
 function! CtrlPWithSearchText(search_text, ctrlp_command_end)
     execute ':CtrlP' . a:ctrlp_command_end
     call feedkeys(a:search_text)
 endfunction
 " same as previous mappings, but calling with current word as default text
-nmap ,wg :call CtrlPWithSearchText(expand('<cword>'), 'BufTag')<CR>
-nmap ,wG :call CtrlPWithSearchText(expand('<cword>'), 'BufTagAll')<CR>
-nmap ,wf :call CtrlPWithSearchText(expand('<cword>'), 'Line')<CR>
-nmap ,we :call CtrlPWithSearchText(expand('<cword>'), '')<CR>
-nmap ,pe :call CtrlPWithSearchText(expand('<cfile>'), '')<CR>
-nmap ,wm :call CtrlPWithSearchText(expand('<cword>'), 'MRUFiles')<CR>
-nmap ,wc :call CtrlPWithSearchText(expand('<cword>'), 'CmdPalette')<CR>
+nmap <leader>wg :call CtrlPWithSearchText(expand('<cword>'), 'BufTag')<CR>
+nmap <leader>wG :call CtrlPWithSearchText(expand('<cword>'), 'BufTagAll')<CR>
+nmap <leader>wf :call CtrlPWithSearchText(expand('<cword>'), 'Line')<CR>
+nmap <leader>we :call CtrlPWithSearchText(expand('<cword>'), '')<CR>
+nmap <leader>pe :call CtrlPWithSearchText(expand('<cfile>'), '')<CR>
+nmap <leader>wm :call CtrlPWithSearchText(expand('<cword>'), 'MRUFiles')<CR>
+nmap <leader>wc :call CtrlPWithSearchText(expand('<cword>'), 'CmdPalette')<CR>
 " don't change working directory
 let g:ctrlp_working_path_mode = 0
 " ignore these files and folders on file finder
@@ -339,8 +337,8 @@ let g:pymode_rope = 0
 " occurrences
 let g:pymode_rope_goto_definition_bind = ',d'
 let g:pymode_rope_goto_definition_cmd = 'e'
-nmap ,D :tab split<CR>:PymodePython rope.goto()<CR>
-nmap ,o :RopeFindOccurrences<CR>
+nmap <leader>D :tab split<CR>:PymodePython rope.goto()<CR>
+nmap <leader>o :RopeFindOccurrences<CR>
 
 " NeoComplCache ------------------------------
 
@@ -425,3 +423,8 @@ let g:airline#extensions#whitespace#enabled = 0
 "let g:airline_symbols.branch = '⭠'
 "let g:airline_symbols.readonly = '⭤'
 "let g:airline_symbols.linenr = '⭡'
+
+" Conque Term -----------------------------
+" mappings
+nmap <Leader>python :ConqueTermSplit python<CR>
+nmap <Leader>bash :ConqueTermSplit bash<CR>
