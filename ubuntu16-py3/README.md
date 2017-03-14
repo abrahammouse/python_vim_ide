@@ -8,7 +8,11 @@ The docker container can be access via ssh
 
 ![screenshot](https://raw.githubusercontent.com/FedeG/python-vim/gh-pages/images/demo.gif)
 
-## Installation and documentation
+## What's different
 
-`docker pull abrahammouse/python-vim-ide`
+This image used Ubuntu:16.04 and python3
+
+## Run
+
+`docker pull abrahammouse/python-vim-ide:16.03`
 
